@@ -1,0 +1,128 @@
+$font-family: 'Nunito Sans', sans-serif;
+$container-sm: 540px;
+$container-md: 740px;
+$container-lg: 960px;
+$container-xlg: 1140px;
+$container-xxlg: 1320px;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 14px;
+}
+
+body{
+    font-family: $font-family;
+    display: block;
+    width: 100%;
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+}
+
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+@mixin flex-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+@mixin flex-column{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+
+.d-flex-center{
+    @include flex-center();
+}
+
+.d-flex-between{
+    @include flex-between();
+}
+
+.d-flex-column{
+    @include flex-column();
+}
+
+
+.container-fluid{
+    width: 100%;
+}
+
+
+.container {
+    max-width: 100%;
+    padding: 2rem;
+    margin-block-start: 2rem;
+    margin-inline: auto;
+    /*border: 1px solid red;*/
+
+
+    @media screen and (min-width: 576px) {
+
+        width: $container-sm !important;
+
+    }
+
+    @media screen and (min-width: 768px) {
+
+        width: $container-md !important;
+
+    }
+
+
+    @media screen and (min-width: 992px) {
+
+        width: $container-lg !important;
+
+    }
+
+    @media screen and (min-width: 1200px) {
+
+        width: $container-xlg !important;
+
+    }
+
+    @media screen and (min-width: 1400px) {
+
+        width: $container-xxlg !important;
+
+    }
+}
+
+.mb-1{
+    margin-block-end: 1rem !important;
+}
+
+.mb-2{
+    margin-block-end: 2rem !important;
+}
+
+.mt-1{
+    margin-block-start: 1rem !important;
+}
+
+.mt-2{
+    margin-block-start: 2rem !important;
+}
+
+.attribution{
+    font-size: 1.2rem;
+    text-align: center;
+    a:link, a:visited{
+        color: hsl(192, 100%, 37%);
+    }
+}

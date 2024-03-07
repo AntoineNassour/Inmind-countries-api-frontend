@@ -1,0 +1,54 @@
+<app-header (buttonClicked)="themeHandler($event)"></app-header>
+<main [class.dark-mode]="changeTheme" class="container-fluid">
+    <div class="container search_filters">
+    <form class="search-form">
+        <div class="search-input-container">
+            <img src="assets/svg/search-outline.svg" alt="">
+        <input type="text" name="search" placeholder="Search for a country..." [(ngModel)]="searchTerm"
+        (input)="search(searchTerm)">
+      </div>
+    </form>
+
+
+    <form>
+    <select class="region-filter" name="filters" [(ngModel)]="selectedRegion" (change)="filterRegion($event)">
+        <option value="none" hidden>Filter by Region</option>
+        <option value="All">All Regions</option>
+        <option value="Africa">Africa</option>
+        <option value="Americas">America</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="Oceania">Oceania</option>
+    </select>
+
+  </form>
+    </div>
+
+    <div class="container content">
+
+        <div *ngFor="let country of countriesDataCopy | searchFilter: searchTerm" class="country-card">
+
+            <div class="country-flag-container">
+               <a routerLink="/country/{{country.cca3}}">
+                <img class="country-flag" [src]="country.flags.png" [alt]="country.name.common">
+            </a>
+            </div>
+
+            <div class="country-stats-container">
+                <h2>{{country.name.common}}</h2>
+                <p class="country-stat-name">Population: <span class="country-stat">{{country.population | number}}</span></p>
+                <p class="country-stat-name">Region: <span class="country-stat">{{country.region}}</span></p>
+                <p class="country-stat-name">Capital: <span class="country-stat">{{country.capital}}</span></p>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+
+<ngx-spinner
+bdColor="{{changeTheme ? 'hsl(207deg, 26%, 17%)' : 'hsl(0deg, 0%, 96%)'}}"
+type="ball-spin"
+color="{{changeTheme ? 'white' : 'hsl(207deg, 26%, 17%)'}}"
+></ngx-spinner>
